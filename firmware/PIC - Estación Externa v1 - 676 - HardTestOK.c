@@ -1,14 +1,14 @@
 //*********************************************************************************************************
-// Programa para la estaci髇 meteorol骻ica externa inal醡brica
-// El programa env韆 Temperatura, Humedad y Luminosidad cada 30 segundos
+// Programa para la estaci贸n meteorol贸gica externa inal谩mbrica
+// El programa env铆a Temperatura, Humedad y Luminosidad cada 30 segundos
 // El sistema entra en bajo consumo cuando mientras no realiza mediciones
-// El enlace se realiza mediante una comunicaci髇 ASK OOK UHF sobre UART Invertido a 600bps
+// El enlace se realiza mediante una comunicaci贸n ASK OOK UHF sobre UART Invertido a 600bps
 //*********************************************************************************************************
 #include <16F676.h>                                            //Biblioteca del microcontrolador
-#fuses NOMCLR, NOWDT, INTRC_IO                                 //Configuraci髇 de fuses
-#device adc=8                                                  //Configuraci髇 del ADC a 8bit
-#use delay(int=4000000)                                        //Configuraci髇 del clock interno a 4MHz
-#use rs232(baud=600,parity=N,xmit=PIN_C5,rcv=PIN_C4,bits=8,invert) //Configuraci髇 de UART 600bps 8 N 1
+#fuses NOMCLR, NOWDT, INTRC_IO                                 //Configuraci贸n de fuses
+#device adc=8                                                  //Configuraci贸n del ADC a 8bit
+#use delay(int=4000000)                                        //Configuraci贸n del clock interno a 4MHz
+#use rs232(baud=600,parity=N,xmit=PIN_C5,rcv=PIN_C4,bits=8,invert) //Configuraci贸n de UART 600bps 8 N 1
 //*********************************************************************************************************
 // Trama DHT11 - Segun Datasheet
 // ____             ____      ____                                       ___
@@ -26,15 +26,15 @@
 #define DATA PIN_A1                                            //Pin del bus de un hilo para el DHT11
 unsigned int trama[5];                                         //Vector donde se alojan los datos
 //*********************************************************************************************************
-// Funci髇 de recepci髇 de Byte
-// Lee el valor le韉o en la trama y lo separa realizando shift
-// Retorna el valor en forma de byte, es utilizado en la funci髇 recibeDato()
+// Funci贸n de recepci贸n de Byte
+// Lee el valor le铆do en la trama y lo separa realizando shift
+// Retorna el valor en forma de byte, es utilizado en la funci贸n recibeDato()
 //*********************************************************************************************************
-unsigned int recibeByte(){                                     //Funci髇 que recibe un Byte
-   unsigned int8 valorLeido=0;                                 //Valor de retorno de la funci髇
-   int8 i=0;                                                   //Inicializaci髇 del indice
+unsigned int recibeByte(){                                     //Funci贸n que recibe un Byte
+   unsigned int8 valorLeido=0;                                 //Valor de retorno de la funci贸n
+   int8 i=0;                                                   //Inicializaci贸n del indice
    int16 timeout=0;
-   for(i=0;i<8;i++){                                           //Iteracion para recepci髇 de bits
+   for(i=0;i<8;i++){                                           //Iteracion para recepci贸n de bits
       valorLeido<<=1;                                          //Registro de desplazamiento de bits
       while(input(DATA)==0);                                   //Espera a DATA = 0
       delay_us(30);                                            //Demora de 30us (Del Datasheet)
@@ -43,26 +43,26 @@ unsigned int recibeByte(){                                     //Funci髇 que rec
       timeout=0;
       while((input(DATA))&&(timeout++<1000));                  //Espera a DATA = 1 y timeout
    }
-   return valorLeido;                                          //Retorna el valor le韉o
+   return valorLeido;                                          //Retorna el valor le铆do
 }
 //*********************************************************************************************************
-// Funci髇 de recepci髇 de dato para el DHT11
+// Funci贸n de recepci贸n de dato para el DHT11
 // Recibe los valores de temperatura y humedad (parte entera y decimales por separado)
-// Recibe el checksum enviado por el DHT11 y lo compara con el le韉o en el programa
+// Recibe el checksum enviado por el DHT11 y lo compara con el le铆do en el programa
 //*********************************************************************************************************
-unsigned int recibeDato(){                                     //Funci髇 que recibe el Dato
-   int validacion=0;                                           //Variable de Validaci髇
-   int checksum=0;                                             //Variable de detecci髇 de cambios de secuencia
+unsigned int recibeDato(){                                     //Funci贸n que recibe el Dato
+   int validacion=0;                                           //Variable de Validaci贸n
+   int checksum=0;                                             //Variable de detecci贸n de cambios de secuencia
    int8 j=0;                                                   //Variable para el lazo for
    output_high(DATA);                                          //Set DATA = 1  
    output_low(DATA);                                           //Set DATA = 0
    delay_ms(18);                                               //Demora de 18ms (Del Datasheet)
    output_high(DATA);                                          //Set DATA = 1
    delay_us(25);                                               //Demora de 25ms (Del Datasheet)
-   validacion=input(DATA);                                     //Mueve valor de DATA a Validaci髇
+   validacion=input(DATA);                                     //Mueve valor de DATA a Validaci贸n
    delay_us(80);                                               //Espera 80us (Del Datasheet)
-   validacion=input(DATA);                                     //Mueve valor de DATA a Validaci髇
-   if(!validacion){                                            //Si Validaci髇 = 0, Error de secuencia
+   validacion=input(DATA);                                     //Mueve valor de DATA a Validaci贸n
+   if(!validacion){                                            //Si Validaci贸n = 0, Error de secuencia
       printf("Error en Checksum \r");                          //Muestra leyenda de error
    }
    delay_us(80);                                               //Espera 80us (Del Datasheet)
@@ -70,56 +70,56 @@ unsigned int recibeDato(){                                     //Funci髇 que rec
        trama[j]=recibeByte();                                  //Carga del vector de datos
    }
    output_high(DATA);                                          //Set DATA = 1
-   for(j=0;j<4;j++){                                           //Lazo de carga de bytes de verificaci髇
-       checksum+=trama[j];                                     //Carga de bytes de verificaci髇
+   for(j=0;j<4;j++){                                           //Lazo de carga de bytes de verificaci贸n
+       checksum+=trama[j];                                     //Carga de bytes de verificaci贸n
    }
-   if(checksum==trama[4]){                                     //Si la secuencia de verificaci髇 es correcta
+   if(checksum==trama[4]){                                     //Si la secuencia de verificaci贸n es correcta
       return 0;                                                //Se retorna 0 y se realiza la lectura
    }
 }
 //*********************************************************************************************************
-// Funci髇 que realiza la lectura del sensor LDR y acondiciona el valor
+// Funci贸n que realiza la lectura del sensor LDR y acondiciona el valor
 //*********************************************************************************************************
-static int8 lecturaLDR(void){                                  //Funci髇 que realiza la lectura del ADC para el LDR
-   set_adc_channel(0);                                         //Selecciona canal ADC 0 y comienza la medici髇
-   delay_us(10);                                               //Delay propuesto por datasheet para conversi髇 ADC
+static int8 lecturaLDR(void){                                  //Funci贸n que realiza la lectura del ADC para el LDR
+   set_adc_channel(0);                                         //Selecciona canal ADC 0 y comienza la medici贸n
+   delay_us(10);                                               //Delay propuesto por datasheet para conversi贸n ADC
    return(read_adc());                                         //Retorna el valor del ADC canal 0
 }
 //*********************************************************************************************************
-// Funci髇 que realiza el parse de datos y armado del payload para enviar por UART
+// Funci贸n que realiza el parse de datos y armado del payload para enviar por UART
 //*********************************************************************************************************
-#define HEADER 200                                             //Definici髇 de valor Header para el payload
+#define HEADER 200                                             //Definici贸n de valor Header para el payload
 static char payload[5];                                        //Variable donde se aloja el payload
-void enivaRF(void){                                            //Declaraci髇 de funci髇 para enviar datos
+void enivaRF(void){                                            //Declaraci贸n de funci贸n para enviar datos
    payload[0]=HEADER;                                          //Carga el Header en byte 0 del payload
    payload[4]=payload[1]+payload[2]+payload[3];                //Realiza suma de los tres datos y lo carga en el byte 4 del payload
-   putc(payload[0]);                                           //Env韆 el byte 0 del payload por UART
+   putc(payload[0]);                                           //Env铆a el byte 0 del payload por UART
    delay_ms(50);                                               //Delay de espera entre bytes enviados por UART
-   putc(payload[1]);                                           //Env韆 el byte 1 del payload por UART
+   putc(payload[1]);                                           //Env铆a el byte 1 del payload por UART
    delay_ms(50);                                               //Delay de espera entre bytes enviados por UART
-   putc(payload[2]);                                           //Env韆 el byte 2 del payload por UART
+   putc(payload[2]);                                           //Env铆a el byte 2 del payload por UART
    delay_ms(50);                                               //Delay de espera entre bytes enviados por UART
-   putc(payload[3]);                                           //Env韆 el byte 3 del payload por UART
+   putc(payload[3]);                                           //Env铆a el byte 3 del payload por UART
    delay_ms(50);                                               //Delay de espera entre bytes enviados por UART
-   putc(payload[4]);                                           //Env韆 el byte 4 del payload por UART
+   putc(payload[4]);                                           //Env铆a el byte 4 del payload por UART
    delay_ms(50);                                               //Delay de espera entre bytes enviados por UART
-   printf("\r");                                               //Env韆 caracter de retorno de linea como final de payload
+   printf("\r");                                               //Env铆a caracter de retorno de linea como final de payload
 }
 //*********************************************************************************************************
-// Programa principal, Realiza la lectura de DHT11, lectura del LDR y Env韆 los datos por UART
+// Programa principal, Realiza la lectura de DHT11, lectura del LDR y Env铆a los datos por UART
 // Realiza el timer de Sleep y WakeUp
 //*********************************************************************************************************
-void main(){                                                   //Funci髇 principal
-   static int8 timer=0;                                        //Definici髇 de variable para el timer
-   setup_adc_ports(sAN0|VSS_VDD);                              //Configuraci髇 de canales ADC
-   setup_adc(ADC_CLOCK_DIV_2);                                 //Configuraci髇 de velocidad de conversi髇 de ADC
+void main(){                                                   //Funci贸n principal
+   static int8 timer=0;                                        //Definici贸n de variable para el timer
+   setup_adc_ports(sAN0|VSS_VDD);                              //Configuraci贸n de canales ADC
+   setup_adc(ADC_CLOCK_DIV_2);                                 //Configuraci贸n de velocidad de conversi贸n de ADC
    while(true){                                                //Loop principal repetitivo
       if(timer>2){                                             //Cantidad de iteraciones del timer
          if(recibeDato()==0){                                  //Consulta si hay dato en la entrada del DHT11
             payload[1]=trama[2];                               //Carga el valor de temperatura DHT en byte 1 del payload
             payload[2]=trama[0];                               //Carga el valor de humedad DHT en byte 2 del payload
             payload[3]=lecturaLDR();                           //Carga el valor de luminosidad en el byte 3 del payload
-            enivaRF();                                         //Llamado a la funci髇 que env韆 datos
+            enivaRF();                                         //Llamado a la funci贸n que env铆a datos
          }
          timer=0;                                              //Inicializa timer
       }else{                                                   //Mientras que el timer sea menor que limite
