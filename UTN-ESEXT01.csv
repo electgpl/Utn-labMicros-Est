@@ -1,0 +1,11 @@
+"Qty";"Value";"Device";"Package";"Parts";"Description";"";
+"1";"100n";"C-EU050-024X044";"C050-024X044";"C2";"CAPACITOR, European symbol";"";
+"1";"10k";"PHOTOCELLONB";"ON_BOARD";"LDR";"Photo Resitor";"";
+"2";"10k";"R-US_0207/10";"0207/10";"R1, R2";"RESISTOR, American symbol";"";
+"1";"433 HELIX";"SMSC20";"SMSC20";"ANT";"INDUCTOR";"";
+"1";"433.92 ASK";"WIRELESS-XY-FST";"WIRELESS-XY-FST";"M1";"RF Wireless XY-FST Transmitter";"";
+"1";"470u";"CPOL-EUE3.5-10";"E3,5-10";"C1";"POLARIZED CAPACITOR, European symbol";"";
+"1";"C8051F832";"C8051F832";"SOIC16R";"IC1";"8kB ILP Flash MCU Family";"";
+"1";"DHT11";"TEMP-HUM-SENSOR-DHT11";"TEMP-HUM-SENSOR-DHT11";"IC2";"DHT11 - digital humidity & temperature sensor";"";
+"1";"KK2VSQ";"KK2VSQ";"KK-V-2-SQ";"CONN1";"Molex KK";"";
+"1";"UTN_LOGO";"UTN_LOGO";"UTN_LOGO";"U$3";"";"";
