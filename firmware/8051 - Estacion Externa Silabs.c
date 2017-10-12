@@ -1,6 +1,6 @@
 //*********************************************************************************************************
-// Programa para la estaci髇 meteorol骻ica externa inal醡brica
-// El programa env韆 Temperatura, Humedad y Luminosidad cada 30 segundos
+// Programa para la estaci贸n meteorol贸gica externa inal谩mbrica
+// El programa env铆a Temperatura, Humedad y Luminosidad cada 30 segundos
 // El sistema entra en bajo consumo cuando mientras no realiza mediciones
 // El enlace se realiza mediante una comunicacion ASK OOK UHF sobre UART Invertido a 600bps
 // Microcontrolador Silabs C8051F832
@@ -11,11 +11,11 @@
 //*********************************************************************************************************
 // Delay Bloqueante Micro Segundos
 //*********************************************************************************************************
-void delay_us(unsigned int us_count){                        //Funci髇 para delay de micro-segundos
+void delay_us(unsigned int us_count){                        //Funci贸n para delay de micro-segundos
      int t=0;
    while(us_count!=0){                                       //Mientras que el contador es distinto de cero
       for(t=0;t<16;t++){                                     //16MIPS dividido en 16 para 1us
-         _nop_();                                            //Ejecuta funci髇 NOP de ensamblador
+         _nop_();                                            //Ejecuta funci贸n NOP de ensamblador
       }
       us_count--;                                            //Decremento del valor de delay
    }
@@ -23,9 +23,9 @@ void delay_us(unsigned int us_count){                        //Funci髇 para dela
 //*********************************************************************************************************
 // Delay Bloqueante Mili Segundos
 //*********************************************************************************************************
-void delay_ms(unsigned int us_count){                        //Funci髇 para delay de micro-segundos
+void delay_ms(unsigned int us_count){                        //Funci贸n para delay de micro-segundos
    while(us_count!=0){                                       //Mientras que el contador es distinto de cero
-      delay_us(1000);                                        //Ejecuta funci髇 delay micro segundos
+      delay_us(1000);                                        //Ejecuta funci贸n delay micro segundos
       us_count--;                                            //Decremento del valor de delay
    }
 }
@@ -51,8 +51,8 @@ unsigned int trama[5];                                       //Vector donde se a
 // Retorna el valor en forma de byte, es utilizado en la funcion recibeDato()
 //*********************************************************************************************************
 unsigned int recibeByte(){                                   //Funcion que recibe un Byte
-   unsigned int valorLeido = 0;                              //Valor de retorno de la funci髇
-   int i=0;                                                  //Inicializaci髇 del indice
+   unsigned int valorLeido = 0;                              //Valor de retorno de la funci贸n
+   int i=0;                                                  //Inicializaci贸n del indice
    for(i=0; i<8; i++){                                       //Iteracion para recepcion de bits
       valorLeido <<= 1;                                      //Registro de desplazamiento de bits
       while(DATA==0);                                        //Espera a DATA = 0
@@ -109,22 +109,22 @@ int lecturaLDR(void){                                        //Funcion que reali
 //*********************************************************************************************************
 // Funcion que realiza el parse de datos y armado del payload para enviar por UART
 //*********************************************************************************************************
-#define HEADER 200                                           //Definici髇 de valor Header para el payload
+#define HEADER 200                                           //Definici贸n de valor Header para el payload
 static char payload[5];                                      //Variable donde se aloja el payload
-void enivaRF(void){                                          //Declaraci髇 de funci髇 para enviar datos
+void enivaRF(void){                                          //Declaraci贸n de funci贸n para enviar datos
    payload[0]=HEADER;                                        //Carga el Header en byte 0 del payload
    payload[4]=payload[1]+payload[2]+payload[3];              //Realiza suma de los tres datos y lo carga en el byte 4 del payload
-   putchar(payload[0]);                                      //Env韆 el byte 0 del payload por UART
+   putchar(payload[0]);                                      //Env铆a el byte 0 del payload por UART
    delay_ms(50);                                             //Delay de espera entre bytes enviados por UART
-   putchar(payload[1]);                                      //Env韆 el byte 1 del payload por UART
+   putchar(payload[1]);                                      //Env铆a el byte 1 del payload por UART
    delay_ms(50);                                             //Delay de espera entre bytes enviados por UART
-   putchar(payload[2]);                                      //Env韆 el byte 2 del payload por UART
+   putchar(payload[2]);                                      //Env铆a el byte 2 del payload por UART
    delay_ms(50);                                             //Delay de espera entre bytes enviados por UART
-   putchar(payload[3]);                                      //Env韆 el byte 3 del payload por UART
+   putchar(payload[3]);                                      //Env铆a el byte 3 del payload por UART
    delay_ms(50);                                             //Delay de espera entre bytes enviados por UART
-   putchar(payload[4]);                                      //Env韆 el byte 4 del payload por UART
+   putchar(payload[4]);                                      //Env铆a el byte 4 del payload por UART
    delay_ms(50);                                             //Delay de espera entre bytes enviados por UART
-   printf("\r");                                             //Env韆 caracter de retorno de linea como final de payload
+   printf("\r");                                             //Env铆a caracter de retorno de linea como final de payload
 }
 //*********************************************************************************************************
 // Configuracion puerto serie a 9600 baud con cristal externo de 16MHz.
@@ -140,7 +140,7 @@ void configuraUART(void){
 // Configuracion ADC pin P0.0
 //*********************************************************************************************************
 void configuraADC(void){
-   #define VREF 3                                            //Tensi髇 de referencia interna
+   #define VREF 3                                            //Tensi贸n de referencia interna
    P0MDIN = 0xFE;                                            //Selecciona pin P0.0 como canal ADC
    P0SKIP = 0x01;                                            //Decodificacion Crossbar
    ADC0CF = 0xF8;                                            //Habilita ADC 0
@@ -150,9 +150,9 @@ void configuraADC(void){
 // Programa principal, Realiza la lectura de DHT11, lectura del LDR y Envia los datos por UART
 // Realiza el timer de Sleep y WakeUp
 //*********************************************************************************************************
-void main(){                                                 //Funci髇 principal
-     configuraUART();                                        //Funci髇 que configura UART
-     configuraADC();                                         //Funci髇 que configura ADC
+void main(){                                                 //Funci贸n principal
+     configuraUART();                                        //Funci贸n que configura UART
+     configuraADC();                                         //Funci贸n que configura ADC
      printf("CONFIGURADO\r");
      delay_ms(500);
    while(1){                                                 //Loop principal repetitivo
@@ -160,7 +160,7 @@ void main(){                                                 //Funci髇 principal
          payload[1]=trama[2];                                //Carga el valor de temperatura DHT en byte 1 del payload
          payload[2]=trama[0];                                //Carga el valor de humedad DHT en byte 2 del payload
          payload[3]=lecturaLDR();                            //Carga el valor de luminosidad en el byte 3 del payload
-         enivaRF();                                          //Llamado a la funci髇 que env韆 datos
+         enivaRF();                                          //Llamado a la funci贸n que env铆a datos
       }      
       delay_ms(2304);                                        //Delay del timer de sleep*
    }
