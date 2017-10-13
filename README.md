@@ -78,29 +78,30 @@ El programa se realizará en lenguaje C.
 
 -------
 - Biblioteca para sensor DHT11
--- Manejo de Bus OneWire 5 bytes (4 bytes de datos 1 byte de checksum)
--- Formateo de datos de salida Temperatura: entero sin signo de 8bit
--- Formateo de datos de salida Humedad: entero sin signo de 8bit
+>- Manejo de Bus OneWire 5 bytes (4 bytes de datos 1 byte de checksum)
+>- Formateo de datos de salida Temperatura: entero sin signo de 8bit
+>- Formateo de datos de salida Humedad: entero sin signo de 8bit
 
 - Biblioteca de control del LCD
--- Mapeo de los 2 renglones y 16 caracteres.
--- Control de memoria mediante bus de 4bit y control.
--- Entrada mediante string con control xy de caracteres.
+>- Mapeo de los 2 renglones y 16 caracteres.
+>- Control de memoria mediante bus de 4bit y control.
+>- Entrada mediante string con control xy de caracteres.
 
 - Biblioteca bitbanging para protocolo manchester en los enlaces UHF
--- BitBanging de del protocolo.
--- Realización de Checksum
--- Salida de datos en formato hexadecimal.
--- Entrada de datos en formato hexadecimal.
+>- BitBanging de del protocolo.
+>- Realización de Checksum
+>- Salida de datos en formato hexadecimal.
+>- Entrada de datos en formato hexadecimal.
 
 - Biblioteca del sensor de luminosidad
--- Utilización del conversor analogico digital provisto por el microcontrolador.
--- Configuración de baja velocidad a resolución de 8bit.
--- Salida datos en formato entero.
+>- Utilización del conversor analogico digital provisto por el microcontrolador.
+>- Configuración de baja velocidad a resolución de 8bit.
+>- Salida datos en formato entero.
+
 - Manejo de Baja Energía
--- Apagado de dispositivos periféricos en desuso mediante transistores NMOS.
--- Reloj WDT para función WakeUp del MCU cada 2.3s
--- Si los datos a medir (sensores) no cambian respecto a la medición anterior, no se enviaran datos repetidos mejorando el consumo.
+>- Apagado de dispositivos periféricos en desuso mediante transistores NMOS.
+>- Reloj WDT para función WakeUp del MCU cada 2.3s
+>- Si los datos a medir (sensores) no cambian respecto a la medición anterior, no se enviaran datos repetidos mejorando el consumo.
 
 --------
 
@@ -134,21 +135,21 @@ Se comprobó el diseño de la antena con la ayuda de instrumental adecuado “VN
 
 ### Bibliografía
  
-[1] “Manual 8051 Keil”, 
+- [1] “Manual 8051 Keil”, 
 http://www.keil.com/support/man/docs/is51/
-[2] “Manual Eagle”, 
+- [2] “Manual Eagle”, 
 http://hades.mech.northwestern.edu/images/b/b4/Eagle_Manual.pdf
-[3] “Norma ATEX”, 
+- [3] “Norma ATEX”, 
 http://www.insht.es/InshtWeb/Contenidos/Normativa/GuiasTecnicas/Ficheros/ATM%C3%93SFERAS%20EXPLOSIVAS.pdf
-[4] “Norma IPX3”, 
+- [4] “Norma IPX3”, 
 http://hades.mech.northwestern.edu/images/b/b4/Eagle_Manual.pdfhttp://www.f2i2.net/documentos/lsi/rbt/guias/guia_bt_anexo_1_sep03R1.pdf
-[5] “Norma IPC610”, 
+- [5] “Norma IPC610”, 
 http://www.ipc.org/TOC/IPC-A-610E-Spanish.pdf
-[6] “Datasheet DHT11”, 
+- [6] “Datasheet DHT11”, 
 https://akizukidenshi.com/download/ds/aosong/DHT11.pdf
-[7] “Datasheet Modulos Transmisor y Receptor RF UHF”, https://4.imimg.com/data4/AJ/NM/MY-1833510/rf-transmitter-receiver-pair-433-mhz-ask.pdf
-[8] “Datasheet LDR”, 
+- [7] “Datasheet Modulos Transmisor y Receptor RF UHF”, https://4.imimg.com/data4/AJ/NM/MY-1833510/rf-transmitter-receiver-pair-433-mhz-ask.pdf
+- [8] “Datasheet LDR”, 
 http://kennarar.vma.is/thor/v2011/vgr402/ldr.pdf
-[9] “Datasheet C8051F832 Silabs”, https://www.silabs.com/documents/public/data-sheets/C8051F80x-83x.pdf
-[10] “Datasheet TP4056”, https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdf
+- [9] “Datasheet C8051F832 Silabs”, https://www.silabs.com/documents/public/data-sheets/C8051F80x-83x.pdf
+- [10] “Datasheet TP4056”, https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdf
 
