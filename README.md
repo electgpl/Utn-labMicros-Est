@@ -26,7 +26,6 @@ También se realizará la puesta en marcha del sistema mediante electrónica de 
 
 
 > **Nota:**
-
 > - El microcontrolador utilizado se basa en core 8051 (para el cual el firmware se encuentra compilado con Keil sobre un microcontrolador de Silabs C8051F832).
 > - Se ha realizado también para Microchip sobre diversas plataformas
 > - La simulación se realiza para Microchip sobre Proteus.
@@ -45,8 +44,8 @@ Se tomará humedad y temperatura interior, y junto con la telemetría exterior s
 La estación interna cuenta con baterías recargables y su controlador de carga para ser conectado directamente con un cable estándar micro usb.
 
 ----------
-### Implementación
-#### Especificaciones de Hardware:
+## Implementación
+### Especificaciones de Hardware:
 #### Dispositivo Interno:
 - Sensor de Temperatura y Humedad, DHT11 (comunicación onWire propietaria).
 - Receptor modular RWS simplex UHF operando en la banda de 70cm en 433.92MHz, modulación ASK OOK utilizando protocolo RS232, Antena del tipo microstrip IFA 50 Ohms.
@@ -103,6 +102,8 @@ El programa se realizará en lenguaje C.
 -- Reloj WDT para función WakeUp del MCU cada 2.3s
 -- Si los datos a medir (sensores) no cambian respecto a la medición anterior, no se enviaran datos repetidos mejorando el consumo.
 
+--------
+
 ### Especificaciones Técnicas:
 
 Rango de temperatura 0-50°c (precisión ±2°c) 
@@ -118,6 +119,8 @@ Medidas Sensor 91x70x32.5mm
 Gabinete exterior IPX3 
 Este equipo no dispone de protección ATEX, por lo que no debe ser usado en atmósferas potencialmente explosivas (polvo, gases inflamables).
 
+--------
+
 ### Conclusiones
  
 Se ha logrado implementar una estación meteorológica hogareña de bajo consumo y bajo costo que presenta una propuesta comercial respecto a las competidoras de mismas prestaciones.
@@ -126,7 +129,9 @@ Se implementó el código necesario para realizar el proyecto sobre core 8051 ba
 Se realizó todo el tratamiento de la trama, preámbulo, payload, checksum y parseo de datos para realizar el enlace de telemetría entre los dos dispositivos.
 Se analizó la velocidad de transferencia de datos sobre UART para lograr la mejor comunicación y alcance sobre módulos de RF de bajo costo.
 Se comprobó el diseño de la antena con la ayuda de instrumental adecuado “VNA” para su correcta adaptación.
- 
+
+--------
+
 ### Bibliografía
  
 [1] “Manual 8051 Keil”, 
