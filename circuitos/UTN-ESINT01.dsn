@@ -1,4 +1,4 @@
-(PCB "C:/Users/Electgpl/Desktop/EstaciÃ³n MeteorolÃ³gica/Hardware EstaciÃ³n Interna y Externa/UTN-ESINT01/UTN-ESINT01.brd"
+(PCB "C:/Users/Electgpl/Desktop/Estación Meteorológica/Hardware Estación Interna y Externa/UTN-ESINT01/UTN-ESINT01.brd"
   (resolution mil 10000)
   (structure
     (layer "Top" (type signal) (direction orthogonal))
