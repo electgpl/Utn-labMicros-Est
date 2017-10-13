@@ -1,7 +1,7 @@
 Estación Meteorológica Inalámbrica
 =============================
 
-###Introducción
+### Introducción
  
 Se presentará una estación meteorológica inalámbrica hogareña, la misma consta de dos dispositivos individuales, una estación meteorológica interna que provee de valores dentro del recinto donde se encuentra, y una estación meteorológica externa que provee los valores exteriores, entre ambos dispositivos se realiza la telemetría exterior y se muestra en un display alfanumérico en la estación interior, con la finalidad de observar a primera vista los datos meteorológicos internos y externos.
 Esta estación funciona de forma inalámbrica con enlaces de radiofrecuencia y funciona con pilas primarias en el caso exterior y batería recargable en el caso interior.
@@ -14,7 +14,7 @@ También se realizará la puesta en marcha del sistema mediante electrónica de 
 
 ----------
 
-###Objetivos
+### Objetivos
  
 - Estación meteorológica con medición interna y externa.
 - La estación consiste en un sensor externo y uno interno. 
@@ -34,7 +34,7 @@ También se realizará la puesta en marcha del sistema mediante electrónica de 
 
 ----------
 
-###Diseño conceptual
+### Diseño conceptual
  
 Para realizar nuestra estación, utilizaremos microcontroladores modernos de bajo consumo y bajo costo, que permite trabajar con una buena autonomía utilizando pilas primarias para aumentar al máximo el rendimiento del sistema.
 La estación meteorológica utilizara la función especial del microcontrolador para entrar en modo bajo consumo y así extender la batería.
@@ -45,9 +45,9 @@ Se tomará humedad y temperatura interior, y junto con la telemetría exterior s
 La estación interna cuenta con baterías recargables y su controlador de carga para ser conectado directamente con un cable estándar micro usb.
 
 ----------
-###Implementación
-####Especificaciones de Hardware:
-####Dispositivo Interno:
+### Implementación
+#### Especificaciones de Hardware:
+#### Dispositivo Interno:
 - Sensor de Temperatura y Humedad, DHT11 (comunicación onWire propietaria).
 - Receptor modular RWS simplex UHF operando en la banda de 70cm en 433.92MHz, modulación ASK OOK utilizando protocolo RS232, Antena del tipo microstrip IFA 50 Ohms.
 - Display LCD 2x16 con controlador HD44780, para mostrar Temp, Hum, (Interna y Externa), Luminosidad (Externa).
@@ -56,7 +56,7 @@ La estación interna cuenta con baterías recargables y su controlador de carga 
 - Circuito impreso hasta 2 Layer con PTH y tecnologia SMD. 
 - Aceptación IPC-356, IPC-600, UL-94.
 
-####Dispositivo Externo:
+#### Dispositivo Externo:
 - Sensor de Temperatura y Humedad, DHT11 (comunicación onWire propietaria).
 - Sensor de Luminosidad basado en LDR con acondicionamiento por firmware.
 - Transmisor modular TWS simplex UHF operando en la banda de 70cm en 433.92MHz, modulación ASK OOK utilizando protocolo RS232, Antena del tipo microstrip IFA 50 Ohms.
@@ -65,7 +65,7 @@ La estación interna cuenta con baterías recargables y su controlador de carga 
 - Circuito impreso hasta 2 Layer con PTH y tecnologia SMD. 
 - Aceptación IPC-356, IPC-600, UL-94.
 
-###Especificaciones de Firmware:
+### Especificaciones de Firmware:
 El firmware debe contar con estándares de programación, encabezado del programa, descripción, autores, versionado, fechas y referencias.
 Las funciones deben contar con los valores de ingreso y egreso a la misma como así el tipo de datos y la descripción de la función.
 El programa se realizará en lenguaje C.
@@ -103,7 +103,7 @@ El programa se realizará en lenguaje C.
 -- Reloj WDT para función WakeUp del MCU cada 2.3s
 -- Si los datos a medir (sensores) no cambian respecto a la medición anterior, no se enviaran datos repetidos mejorando el consumo.
 
-###Especificaciones Técnicas:
+### Especificaciones Técnicas:
 
 Rango de temperatura 0-50°c (precisión ±2°c) 
 Rango de humedad 20-90%RH (precisión ±5％) 
@@ -117,3 +117,33 @@ Medidas cuerpo 113x67x27.5mm
 Medidas Sensor 91x70x32.5mm 
 Gabinete exterior IPX3 
 Este equipo no dispone de protección ATEX, por lo que no debe ser usado en atmósferas potencialmente explosivas (polvo, gases inflamables).
+
+### Conclusiones
+ 
+Se ha logrado implementar una estación meteorológica hogareña de bajo consumo y bajo costo que presenta una propuesta comercial respecto a las competidoras de mismas prestaciones.
+
+Se implementó el código necesario para realizar el proyecto sobre core 8051 bajo una plataforma moderna que opera en 16MHz y 16MIPS.
+Se realizó todo el tratamiento de la trama, preámbulo, payload, checksum y parseo de datos para realizar el enlace de telemetría entre los dos dispositivos.
+Se analizó la velocidad de transferencia de datos sobre UART para lograr la mejor comunicación y alcance sobre módulos de RF de bajo costo.
+Se comprobó el diseño de la antena con la ayuda de instrumental adecuado “VNA” para su correcta adaptación.
+ 
+### Bibliografía
+ 
+[1] “Manual 8051 Keil”, 
+http://www.keil.com/support/man/docs/is51/
+[2] “Manual Eagle”, 
+http://hades.mech.northwestern.edu/images/b/b4/Eagle_Manual.pdf
+[3] “Norma ATEX”, 
+http://www.insht.es/InshtWeb/Contenidos/Normativa/GuiasTecnicas/Ficheros/ATM%C3%93SFERAS%20EXPLOSIVAS.pdf
+[4] “Norma IPX3”, 
+http://hades.mech.northwestern.edu/images/b/b4/Eagle_Manual.pdfhttp://www.f2i2.net/documentos/lsi/rbt/guias/guia_bt_anexo_1_sep03R1.pdf
+[5] “Norma IPC610”, 
+http://www.ipc.org/TOC/IPC-A-610E-Spanish.pdf
+[6] “Datasheet DHT11”, 
+https://akizukidenshi.com/download/ds/aosong/DHT11.pdf
+[7] “Datasheet Modulos Transmisor y Receptor RF UHF”, https://4.imimg.com/data4/AJ/NM/MY-1833510/rf-transmitter-receiver-pair-433-mhz-ask.pdf
+[8] “Datasheet LDR”, 
+http://kennarar.vma.is/thor/v2011/vgr402/ldr.pdf
+[9] “Datasheet C8051F832 Silabs”, https://www.silabs.com/documents/public/data-sheets/C8051F80x-83x.pdf
+[10] “Datasheet TP4056”, https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdf
+
