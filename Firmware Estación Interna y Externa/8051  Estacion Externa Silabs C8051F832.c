@@ -1,13 +1,11 @@
 //*********************************************************************************************************
-// Programa para la estacion meteorologica Interna inalámbrica
-// El programa recibe Temperatura, Humedad y Luminosidad por interrupcion
-// El sistema mide Temperatura y Humedad interior
+// Programa para la estacion meteorologica Externa inalámbrica
+// El programa envia Temperatura, Humedad y Luminosidad por interrupcion
 // El enlace se realiza mediante una comunicacion ASK OOK UHF sobre UART Invertido a 600bps
-// Se muestra medicion interna y externa en un LCD de 2x16
 // Microcontrolador Silabs C8051F832
 //*********************************************************************************************************
 #include <reg52.h>
-#include <REG51F800.H>
+//#include <REG51F800.H>                                     //Se comenta segun compilador
 #include <intrins.h>
 #include <stdio.h>
 //*********************************************************************************************************
