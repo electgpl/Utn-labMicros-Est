@@ -10,7 +10,7 @@ El proyecto surge de la idea de practicar la programación en lenguaje C, los pr
 También se realizará la puesta en marcha del sistema mediante electrónica de bajo costo y bajo consumo para afrontar el problema energético que conlleva la utilización de pilas y baterías de forma competitiva con productos comerciales de la actualidad.
 
 ----------
-![enter image description here](https://raw.githubusercontent.com/electgpl/estmet/master/documentos/Estacion%20Meteorologica%20Blur.png)
+![enter image description here](https://raw.githubusercontent.com/electgpl/Utn-labMicros-Est/master/Documentaci%C3%B3n/Imagenes/Estacion%20Meteorologica%20Blur.png)
 
 ----------
 
