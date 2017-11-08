@@ -6,7 +6,7 @@
 // Se muestra medicion interna y externa en un LCD de 2x16
 // Microcontrolador Silabs C8051F832
 //*********************************************************************************************************
-#include <REG51F800.H>
+//#include <REG51F800.H>                                     //Se comenta segun compilador
 #include <reg52.h>
 #include <intrins.h>
 #include <stdio.h>
